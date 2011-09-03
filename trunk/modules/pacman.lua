@@ -3,12 +3,13 @@ pacman.width = 32;
 pacman.height = 32;
 pacman.INITIAL_X = 224;
 pacman.INITIAL_Y = 288;
-pacman.ORIENTATION_UP = 1;
-pacman.ORIENTATION_DOWN = 2;
-pacman.ORIENTATION_LEFT = 3;
-pacman.ORIENTATION_RIGHT = 4;
+pacman.ORIENTATION_UP = math.rad(270);
+pacman.ORIENTATION_DOWN = math.rad(90);
+pacman.ORIENTATION_LEFT = math.rad(180);
+pacman.ORIENTATION_RIGHT = math.rad(0);
 pacman.NORMAL_SPEED = 1;
 pacman.SUPER_SPEED = 2;
+pacman.QUAD = love.graphics.newQuad(0,0,32,32,32,32);
 
 function pacman.reset()
   pacman.x = pacman.INITIAL_X;
@@ -56,7 +57,12 @@ function pacman.keypressed(key, unicode)
 end
 
 function pacman.draw()
-  love.graphics.drawq(spriteSheet, quadPacmanRight, pacman.x, pacman.y);
+  love.graphics.drawq(spriteSheet, pacman.QUAD, pacman.x, pacman.y,
+    pacman.orientation, 1, 1, pacman.width/2, pacman.height/2);
+end
+
+function pacman.initialize_quads()
+  
 end
 
 pacman.reset();
