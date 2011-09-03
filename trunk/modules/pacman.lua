@@ -26,6 +26,14 @@ function pacman.update(dt)
     return dt * pacman.speed;
   end
   
+  if pacman.x >= 478 then
+    pacman.x = 0;
+  else
+    if pacman.x <= 0 then
+      pacman.x = 478;
+    end
+  end
+
   if pacman.orientation == pacman.ORIENTATION_UP then
     pacman.y = pacman.y - get_speed(dt);
   end
